@@ -1,6 +1,7 @@
 # CURSOR小白行动指南
 
 ## 项目概述
+代码网页： https://maotiannan.github.io/cursor-guide/
 这是一个为编程初学者设计的CURSOR AI编程助手使用指南，通过简单易懂的语言和实例，帮助新手快速上手CURSOR进行编程开发。
 
 ## 目录
