@@ -33,18 +33,18 @@
                         <a href="#项目实战指南">项目实战指南</a>
                         <ul>
                             <li>
-                                <a href="#web开发">Web开发</a>
+                                <a href="#web开发">网页开发 (Web开发)</a>
                                 <ul>
-                                    <li><a href="#htmlcssjavascript基础项目">HTML/CSS/JavaScript基础项目</a></li>
-                                    <li><a href="#react项目">React项目</a></li>
-                                    <li><a href="#vue项目">Vue项目</a></li>
-                                    <li><a href="#nextjs项目">Next.js项目</a></li>
+                                    <li><a href="#htmlcssjavascript基础项目">网页基础技术项目 (HTML/CSS/JavaScript基础项目)</a></li>
+                                    <li><a href="#react项目">现代交互式网页框架项目 (React项目)</a></li>
+                                    <li><a href="#vue项目">轻量级渐进式框架项目 (Vue项目)</a></li>
+                                    <li><a href="#nextjs项目">服务端渲染框架项目 (Next.js项目)</a></li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#后端开发">后端开发</a>
+                                <a href="#后端开发">服务器端开发 (后端开发)</a>
                                 <ul>
-                                    <li><a href="#nodejsexpress项目">Node.js/Express项目</a></li>
+                                    <li><a href="#nodejsexpress项目">JavaScript服务器框架项目 (Node.js/Express项目)</a></li>
                                     <li><a href="#pythonflask项目">Python/Flask项目</a></li>
                                     <li><a href="#pythondjango项目">Python/Django项目</a></li>
                                     <li><a href="#javaspring-boot项目">Java/Spring Boot项目</a></li>
@@ -185,10 +185,10 @@
                     </ul>
                     
                     <section id="web开发">
-                        <h3>Web开发</h3>
+                        <h3>网页开发 (Web开发)</h3>
                         
                         <section id="htmlcssjavascript基础项目">
-                            <h4>HTML/CSS/JavaScript基础项目</h4>
+                            <h4>网页基础技术项目 (HTML/CSS/JavaScript基础项目)</h4>
                             
                             <h5>项目概述：个人作品集网站</h5>
                             <p>我们将创建一个简单的个人作品集网站，包含首页、作品展示和联系方式等基本功能。通过这个项目，你将学习如何使用CURSOR从零开始构建一个完整的网站。</p>
@@ -196,7 +196,7 @@
                             <div class="project-steps">
                                 <h5>第1步：创建项目结构</h5>
                                 <ol>
-                                    <li>打开CURSOR，点击"File"→"New Folder"创建一个新文件夹，命名为"my-portfolio"</li>
+                                    <li>打开CURSOR，点击"文件"→"新建文件夹"创建一个新文件夹，命名为"my-portfolio"</li>
                                     <li>在AI助手中输入：<code>帮我创建一个个人作品集网站的基本文件结构</code></li>
                                     <li>AI将生成基本的文件结构，包括：
                                         <ul>
@@ -296,15 +296,15 @@
                         </section>
                         
                         <section id="react项目">
-                            <h4>React项目</h4>
+                            <h4>现代交互式网页框架项目 (React项目)</h4>
                             
                             <h5>项目概述：任务管理应用</h5>
-                            <p>我们将创建一个React任务管理应用，用户可以添加、编辑、删除和标记完成任务。这个项目将帮助你学习React的基础概念和CURSOR如何辅助React开发。</p>
+                            <p>我们将创建一个任务管理应用，用户可以添加、编辑、删除和标记完成任务。这个项目将帮助你学习React（一种流行的网页开发框架）的基础概念和CURSOR如何辅助React开发。</p>
                             
                             <div class="project-steps">
                                 <h5>第1步：环境准备</h5>
                                 <ol>
-                                    <li>确保已安装Node.js和npm</li>
+                                    <li>确保已安装Node.js（一种JavaScript运行环境）和npm（Node.js的包管理器）</li>
                                     <li>在CURSOR的终端中，输入以下命令检查安装：
                                         <pre><code>node -v
 npm -v</code></pre>
@@ -327,7 +327,281 @@ cd task-manager</code></pre>
                             </div>
                         </section>
                         
-                        <!-- 其他Web开发项目将在这里继续添加 -->
+                        <section id="vue项目">
+                            <h4>轻量级渐进式框架项目 (Vue项目)</h4>
+                            
+                            <h5>项目概述：在线笔记应用</h5>
+                            <p>我们将创建一个在线笔记应用，用户可以创建、编辑、分类和搜索笔记。这个项目将帮助你学习Vue.js（一种流行的渐进式JavaScript框架）的基础概念和CURSOR如何辅助Vue开发。</p>
+                            
+                            <div class="project-steps">
+                                <h5>第1步：环境准备</h5>
+                                <ol>
+                                    <li>确保已安装Node.js和npm</li>
+                                    <li>在CURSOR的终端中安装Vue CLI（Vue的命令行工具）：<code>npm install -g @vue/cli</code></li>
+                                    <li>验证安装：<code>vue --version</code></li>
+                                </ol>
+                                
+                                <h5>第2步：创建Vue项目</h5>
+                                <ol>
+                                    <li>在CURSOR的终端中，导航到你想创建项目的目录</li>
+                                    <li>输入以下命令创建新的Vue项目：<code>vue create notes-app</code></li>
+                                    <li>选择Vue 3和所需功能（如路由管理、状态管理、CSS预处理器等）</li>
+                                    <li>等待项目创建完成</li>
+                                    <li>在AI助手中询问：<code>Vue 3项目的文件结构是什么意思？每个文件的作用是什么？</code></li>
+                                </ol>
+                                
+                                <h5>第3步：规划组件结构</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>为在线笔记应用设计组件结构，包括笔记列表、笔记编辑器、分类管理和搜索功能</code></li>
+                                    <li>根据AI的建议创建组件文件</li>
+                                    <li>在src/components目录下创建所需的组件文件</li>
+                                </ol>
+                                
+                                <h5>第4步：实现笔记列表组件</h5>
+                                <ol>
+                                    <li>创建NoteList.vue组件</li>
+                                    <li>在AI助手中输入：<code>创建一个Vue 3的笔记列表组件，显示所有笔记的标题和预览，并支持点击查看详情</code></li>
+                                    <li>根据AI的建议实现组件</li>
+                                    <li>询问AI：<code>如何在Vue 3中实现笔记列表的排序和筛选功能？</code></li>
+                                </ol>
+                                
+                                <h5>第5步：实现笔记编辑器组件</h5>
+                                <ol>
+                                    <li>创建NoteEditor.vue组件</li>
+                                    <li>在AI助手中输入：<code>创建一个Vue 3的笔记编辑器组件，支持Markdown格式，并能实时预览</code></li>
+                                    <li>根据AI的建议实现组件</li>
+                                    <li>询问AI：<code>如何在Vue中集成一个好用的Markdown编辑器？</code></li>
+                                </ol>
+                                
+                                <h5>第6步：实现状态管理</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>在Vue 3项目中，如何使用Pinia或Vuex管理笔记数据？</code></li>
+                                    <li>根据AI的建议选择状态管理方案</li>
+                                    <li>创建store文件夹和相关文件</li>
+                                    <li>实现笔记的增删改查操作</li>
+                                </ol>
+                                
+                                <h5>第7步：添加本地存储</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何在Vue应用中使用localStorage或IndexedDB保存笔记数据？</code></li>
+                                    <li>根据AI的建议实现本地存储功能</li>
+                                    <li>测试数据持久化功能</li>
+                                </ol>
+                                
+                                <h5>第8步：测试与部署</h5>
+                                <ol>
+                                    <li>在CURSOR的终端中运行应用：<code>npm run serve</code></li>
+                                    <li>测试所有功能</li>
+                                    <li>在AI助手中输入：<code>如何构建Vue应用并部署到Netlify或Vercel？</code></li>
+                                    <li>按照AI的指导构建和部署应用</li>
+                                </ol>
+                            </div>
+                            
+                            <h5>常见问题解决</h5>
+                            <div class="faq">
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：Vue组件不渲染或显示异常</div>
+                                    <div class="answer"><strong>解决方案</strong>：检查组件注册是否正确，确保数据响应式定义正确，使用Vue开发工具调试组件状态</div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：状态管理更新但界面不更新</div>
+                                    <div class="answer"><strong>解决方案</strong>：确保正确使用计算属性或store的getter，检查组件是否正确订阅了状态变化</div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：路由导航不正确</div>
+                                    <div class="answer"><strong>解决方案</strong>：检查路由配置，确保路径和组件映射正确，使用Vue Router的导航守卫处理特殊情况</div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <section id="nextjs项目">
+                            <h4>服务端渲染框架项目 (Next.js项目)</h4>
+                            
+                            <h5>项目概述：个人博客网站</h5>
+                            <p>我们将创建一个使用Next.js（一种基于React的服务端渲染框架）构建的个人博客网站，具有文章列表、详情页、分类和搜索功能。这个项目将帮助你学习服务端渲染和静态站点生成的概念。</p>
+                            
+                            <div class="project-steps">
+                                <h5>第1步：环境准备</h5>
+                                <ol>
+                                    <li>确保已安装Node.js和npm</li>
+                                    <li>在CURSOR的终端中，创建Next.js项目：
+                                        <pre><code>npx create-next-app blog-site
+cd blog-site</code></pre>
+                                    </li>
+                                    <li>等待项目创建完成</li>
+                                </ol>
+                                
+                                <h5>第2步：创建页面结构</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>为Next.js博客网站创建基本页面结构，包括首页、文章列表页、文章详情页和关于页面</code></li>
+                                    <li>根据AI的建议，在pages目录下创建相应的页面文件</li>
+                                    <li>创建共享组件，如导航栏、页脚和文章卡片</li>
+                                </ol>
+                                
+                                <h5>第3步：设置数据源</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何在Next.js中使用Markdown文件作为博客文章的数据源？</code></li>
+                                    <li>根据AI的建议，创建content目录并添加示例Markdown文章</li>
+                                    <li>安装必要的依赖，如gray-matter和remark</li>
+                                    <li>创建工具函数来解析Markdown文件</li>
+                                </ol>
+                                
+                                <h5>第4步：实现静态生成</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何使用Next.js的getStaticProps和getStaticPaths实现博客文章的静态生成？</code></li>
+                                    <li>根据AI的建议，实现文章列表和详情页的静态生成</li>
+                                    <li>添加分类和标签功能</li>
+                                </ol>
+                                
+                                <h5>第5步：添加样式</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>推荐在Next.js项目中使用哪种CSS方案？</code></li>
+                                    <li>根据AI的建议，选择合适的样式方案（如CSS模块、Tailwind CSS或Styled Components）</li>
+                                    <li>为博客网站添加响应式设计</li>
+                                </ol>
+                                
+                                <h5>第6步：添加交互功能</h5>
+                                <ol>
+                                    <li>实现搜索功能</li>
+                                    <li>添加文章评论系统</li>
+                                    <li>实现暗色/亮色模式切换</li>
+                                </ol>
+                                
+                                <h5>第7步：部署网站</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何将Next.js博客部署到Vercel？</code></li>
+                                    <li>按照AI的指导，配置部署设置</li>
+                                    <li>完成网站部署</li>
+                                </ol>
+                            </div>
+                            
+                            <h5>常见问题解决</h5>
+                            <div class="faq">
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：静态生成的页面数据不更新</div>
+                                    <div class="answer"><strong>解决方案</strong>：检查getStaticProps函数，确保正确配置了revalidate参数或使用增量静态再生成</div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：图片优化不生效</div>
+                                    <div class="answer"><strong>解决方案</strong>：确保正确使用Next.js的Image组件，并配置了适当的图片域名</div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：部署后出现404错误</div>
+                                    <div class="answer"><strong>解决方案</strong>：检查路由配置，确保动态路由的getStaticPaths返回了所有必要的路径</div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                    
+                    <section id="后端开发">
+                        <h3>服务器端开发 (后端开发)</h3>
+                        
+                        <section id="nodejsexpress项目">
+                            <h4>JavaScript服务器框架项目 (Node.js/Express项目)</h4>
+                            
+                            <h5>项目概述：RESTful API服务</h5>
+                            <p>我们将创建一个使用Node.js和Express（一种流行的JavaScript服务器框架）构建的RESTful API服务，实现用户认证、数据存储和业务逻辑处理。这个项目将帮助你学习服务器端开发的基础知识。</p>
+                            
+                            <div class="project-steps">
+                                <h5>第1步：环境准备</h5>
+                                <ol>
+                                    <li>确保已安装Node.js和npm</li>
+                                    <li>创建项目文件夹并初始化：
+                                        <pre><code>mkdir api-server
+cd api-server
+npm init -y</code></pre>
+                                    </li>
+                                    <li>安装必要的依赖：
+                                        <pre><code>npm install express mongoose dotenv bcrypt jsonwebtoken cors</code></pre>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第2步：创建项目结构</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>为Express API服务创建一个合理的项目结构</code></li>
+                                    <li>根据AI的建议，创建以下目录和文件：
+                                        <ul>
+                                            <li>models/（数据模型）</li>
+                                            <li>routes/（路由定义）</li>
+                                            <li>controllers/（业务逻辑）</li>
+                                            <li>middleware/（中间件）</li>
+                                            <li>config/（配置文件）</li>
+                                            <li>utils/（工具函数）</li>
+                                            <li>server.js（入口文件）</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第3步：配置数据库连接</h5>
+                                <ol>
+                                    <li>创建.env文件存储环境变量</li>
+                                    <li>在AI助手中输入：<code>如何配置MongoDB连接并创建连接函数？</code></li>
+                                    <li>根据AI的建议，实现数据库连接配置</li>
+                                </ol>
+                                
+                                <h5>第4步：创建数据模型</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>创建用户和产品的Mongoose模型</code></li>
+                                    <li>根据AI的建议，在models目录下创建相应的模型文件</li>
+                                </ol>
+                                
+                                <h5>第5步：实现认证功能</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何使用JWT实现用户注册、登录和认证中间件？</code></li>
+                                    <li>根据AI的建议，实现认证相关的控制器和中间件</li>
+                                </ol>
+                                
+                                <h5>第6步：创建API路由</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>为用户和产品资源创建RESTful API路由</code></li>
+                                    <li>根据AI的建议，实现CRUD操作的路由和控制器</li>
+                                </ol>
+                                
+                                <h5>第7步：添加错误处理</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何在Express应用中实现全局错误处理？</code></li>
+                                    <li>根据AI的建议，创建错误处理中间件</li>
+                                </ol>
+                                
+                                <h5>第8步：测试API</h5>
+                                <ol>
+                                    <li>使用Postman或curl测试API端点</li>
+                                    <li>在AI助手中输入：<code>如何使用Jest为Express API编写单元测试？</code></li>
+                                    <li>根据AI的建议，添加测试用例</li>
+                                </ol>
+                                
+                                <h5>第9步：部署API服务</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何将Express API部署到Heroku或AWS？</code></li>
+                                    <li>按照AI的指导，准备部署配置</li>
+                                    <li>完成API服务部署</li>
+                                </ol>
+                            </div>
+                            
+                            <h5>常见问题解决</h5>
+                            <div class="faq">
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：数据库连接失败</div>
+                                    <div class="answer"><strong>解决方案</strong>：检查MongoDB连接字符串，确保数据库服务正在运行，网络连接正常</div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：JWT认证不工作</div>
+                                    <div class="answer"><strong>解决方案</strong>：检查JWT密钥配置，确保令牌正确生成和验证，检查请求头中的Authorization格式</div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：跨域资源共享(CORS)错误</div>
+                                    <div class="answer"><strong>解决方案</strong>：正确配置CORS中间件，设置允许的源、方法和头部</div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <!-- 其他后端开发项目将在这里继续添加 -->
                     </section>
                     
                     <!-- 其他项目类别将在这里继续添加 -->
