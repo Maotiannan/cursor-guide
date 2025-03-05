@@ -130,6 +130,7 @@
                         <li><strong>文件浏览区</strong>：位于左侧，就像电脑里的"文件夹"，用来查看和管理你的项目文件</li>
                         <li><strong>代码编辑区</strong>：位于中间的大区域，就像一个智能记事本，用来写代码和修改代码</li>
                         <li><strong>AI助手对话框</strong>：位于右侧或底部，就像一个聊天窗口，你可以在这里向AI提问或请求帮助</li>
+                        <li><strong>命令窗口</strong>（终端）：位于底部，用来运行程序和查看运行结果，类似于电脑的"命令提示符"</li>
                         <li><strong>命令窗口</strong>：位于底部，用来运行程序和查看运行结果，类似于电脑的"命令提示符"</li>
                         <li><strong>状态信息栏</strong>：位于最底部，显示当前文件信息、代码版本状态等</li>
                     </ul>
@@ -194,7 +195,7 @@
                                 <div class="example-image">
                                     <img src="images/portfolio-example.png" alt="个人作品集网站截图">
                                 </div>
-                                <p>一个展示个人作品和技能的响应式网站，适合设计师、摄影师或开发者使用。</p>
+                                <p>一个展示个人作品和技能的自适应网站（响应式网站），适合设计师、摄影师或开发者使用。</p>
                             </div>
                             
                             <div class="example-item">
@@ -210,7 +211,7 @@
                                 <div class="example-image">
                                     <img src="images/notes-app-example.png" alt="在线笔记本应用截图">
                                 </div>
-                                <p>支持Markdown格式的笔记应用，可以分类整理和搜索笔记内容。</p>
+                                <p>支持特殊格式文本（Markdown格式）的笔记应用，可以分类整理和搜索笔记内容。</p>
                             </div>
                             
                             <div class="example-item">
@@ -226,7 +227,7 @@
                                 <div class="example-image">
                                     <img src="images/api-example.png" alt="API服务截图">
                                 </div>
-                                <p>为前端应用提供数据的后端服务，包含用户认证和数据管理功能。</p>
+                                <p>为前端应用提供数据的后台服务（后端服务），包含用户认证和数据管理功能。</p>
                             </div>
                             
                             <div class="example-item">
@@ -659,13 +660,1254 @@ npm init -y</code></pre>
                             </div>
                         </section>
                         
-                        <!-- 其他后端开发项目将在这里继续添加 -->
+                        <section id="pythonflask项目">
+                            <h4>用Python制作简单网站服务 (Python/Flask项目)</h4>
+                            
+                            <h5>项目概述：数据可视化面板</h5>
+                            <p>我们将创建一个简单的数据可视化网站，就像一个数据仪表盘，可以展示各种图表和数据分析结果。这个项目使用Python的Flask框架（一种轻量级的网站开发工具，就像一个迷你厨房，麻雀虽小但五脏俱全）和一些数据可视化库。</p>
+                            
+                            <div class="project-steps">
+                                <h5>第1步：准备工作环境</h5>
+                                <ol>
+                                    <li>确保电脑上已安装Python（3.7或更高版本）</li>
+                                    <li>在CURSOR的命令窗口中，创建一个新的项目文件夹：
+                                        <pre><code>mkdir data-dashboard
+cd data-dashboard</code></pre>
+                                    </li>
+                                    <li>创建虚拟环境（就像为项目创建一个独立的小房间，不会影响其他项目）：
+                                        <pre><code>python -m venv venv</code></pre>
+                                    </li>
+                                    <li>激活虚拟环境：
+                                        <pre><code># Windows系统
+venv\Scripts\activate
+
+# macOS/Linux系统
+source venv/bin/activate</code></pre>
+                                    </li>
+                                    <li>安装所需的库：
+                                        <pre><code>pip install flask pandas matplotlib seaborn plotly</code></pre>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第2步：创建项目结构</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>为Flask数据可视化项目创建一个合理的项目结构</code></li>
+                                    <li>根据AI的建议，创建以下目录和文件：
+                                        <ul>
+                                            <li>app.py（主应用文件，就像整个项目的大脑）</li>
+                                            <li>templates/（HTML模板文件夹，存放网页的"骨架"）
+                                                <ul>
+                                                    <li>layout.html（基础布局模板）</li>
+                                                    <li>index.html（首页模板）</li>
+                                                    <li>dashboard.html（仪表盘页面模板）</li>
+                                                </ul>
+                                            </li>
+                                            <li>static/（静态文件文件夹，存放CSS、JavaScript和图片等）
+                                                <ul>
+                                                    <li>css/style.css（样式文件）</li>
+                                                    <li>js/main.js（JavaScript文件）</li>
+                                                    <li>data/（示例数据文件夹）</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第3步：创建Flask应用</h5>
+                                <ol>
+                                    <li>打开app.py文件</li>
+                                    <li>在AI助手中输入：<code>创建一个基本的Flask应用，包含首页和仪表盘页面的路由</code></li>
+                                    <li>根据AI的建议，实现基本的Flask应用代码：
+                                        <pre><code>from flask import Flask, render_template
+import pandas as pd
+import json
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html', title='数据可视化面板')
+
+@app.route('/dashboard')
+def dashboard():
+    # 这里将来会添加数据处理代码
+    return render_template('dashboard.html', title='数据仪表盘')
+
+if __name__ == '__main__':
+    app.run(debug=True)</code></pre>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第4步：准备示例数据</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>创建一些示例数据用于数据可视化项目</code></li>
+                                    <li>根据AI的建议，在static/data/目录下创建示例数据文件，如sales_data.csv：
+                                        <pre><code>date,product,region,sales,units
+2023-01-01,产品A,北区,12500,125
+2023-01-01,产品B,北区,8700,87
+2023-01-01,产品A,南区,10800,108
+2023-01-01,产品B,南区,6500,65
+2023-01-02,产品A,北区,13200,132
+2023-01-02,产品B,北区,9100,91
+...</code></pre>
+                                    </li>
+                                    <li>在AI助手中输入：<code>如何在Flask中读取CSV数据并转换为JSON格式？</code></li>
+                                    <li>根据AI的建议，更新app.py添加数据处理函数</li>
+                                </ol>
+                                
+                                <h5>第5步：创建HTML模板</h5>
+                                <ol>
+                                    <li>创建templates/layout.html基础模板</li>
+                                    <li>在AI助手中输入：<code>创建一个Flask应用的基础布局模板，包含导航栏和页脚</code></li>
+                                    <li>创建templates/index.html首页模板</li>
+                                    <li>创建templates/dashboard.html仪表盘页面模板</li>
+                                    <li>在AI助手中输入：<code>创建一个数据仪表盘页面的HTML模板，包含多个图表区域</code></li>
+                                </ol>
+                                
+                                <h5>第6步：实现数据可视化</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何在Flask应用中使用Plotly.js创建交互式图表？</code></li>
+                                    <li>根据AI的建议，更新app.py添加数据处理和图表生成代码：
+                                        <pre><code>@app.route('/api/sales-data')
+def sales_data():
+    df = pd.read_csv('static/data/sales_data.csv')
+    
+    # 按日期和产品分组计算销售总额
+    sales_by_date = df.groupby(['date', 'product'])['sales'].sum().reset_index()
+    
+    # 转换为JSON格式
+    result = {
+        'dates': sorted(df['date'].unique().tolist()),
+        'products': sorted(df['product'].unique().tolist()),
+        'sales': []
+    }
+    
+    for product in result['products']:
+        product_data = sales_by_date[sales_by_date['product'] == product]
+        result['sales'].append({
+            'product': product,
+            'data': product_data['sales'].tolist()
+        })
+    
+    return json.dumps(result)</code></pre>
+                                    </li>
+                                    <li>在static/js/main.js中添加图表生成代码</li>
+                                    <li>在AI助手中输入：<code>使用Plotly.js创建销售数据折线图和饼图的JavaScript代码</code></li>
+                                </ol>
+                                
+                                <h5>第7步：添加交互功能</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何添加日期范围选择器来筛选数据？</code></li>
+                                    <li>根据AI的建议，更新HTML模板和JavaScript代码，添加交互控件</li>
+                                    <li>添加数据筛选和图表更新功能</li>
+                                </ol>
+                                
+                                <h5>第8步：美化界面</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>为数据仪表盘创建现代简洁的CSS样式</code></li>
+                                    <li>根据AI的建议，更新static/css/style.css文件</li>
+                                    <li>添加响应式设计，确保在不同设备上都能正常显示</li>
+                                </ol>
+                                
+                                <h5>第9步：运行和测试</h5>
+                                <ol>
+                                    <li>在命令窗口中运行应用：<code>python app.py</code></li>
+                                    <li>在浏览器中访问：http://127.0.0.1:5000/</li>
+                                    <li>测试各项功能，确保图表正确显示和交互正常</li>
+                                </ol>
+                                
+                                <h5>第10步：部署应用</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何将Flask应用部署到Heroku或PythonAnywhere？</code></li>
+                                    <li>根据AI的建议，准备部署配置文件（requirements.txt、Procfile等）</li>
+                                    <li>按照步骤完成部署</li>
+                                </ol>
+                            </div>
+                            
+                            <h5>常见问题解决</h5>
+                            <div class="faq">
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：图表不显示或显示错误</div>
+                                    <div class="answer"><strong>解决方案</strong>：检查浏览器控制台是否有JavaScript错误，确保数据格式正确，验证API端点是否返回预期的数据</div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：应用启动失败</div>
+                                    <div class="answer"><strong>解决方案</strong>：检查是否安装了所有必要的库，确保端口5000没有被其他应用占用，查看错误日志获取详细信息</div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：数据加载缓慢</div>
+                                    <div class="answer"><strong>解决方案</strong>：优化数据处理逻辑，考虑使用缓存机制，减小数据集大小或实现分页加载</div>
+                                </div>
+                            </div>
+                            
+                            <h5>进阶提升</h5>
+                            <p>完成基础项目后，你可以向AI询问如何添加以下功能来提升你的项目：</p>
+                            <ol>
+                                <li>添加用户认证系统，实现登录和权限控制</li>
+                                <li>集成数据库（如SQLite或MongoDB）存储和管理数据</li>
+                                <li>实现数据上传功能，允许用户上传自己的CSV文件进行分析</li>
+                                <li>添加更多类型的图表和可视化效果</li>
+                                <li>实现数据导出功能，支持将图表保存为图片或PDF</li>
+                            </ol>
                     </section>
                     
-                    <!-- 其他项目类别将在这里继续添加 -->
+                        <section id="pythondjango项目">
+                            <h4>用Python制作功能完整的网站 (Python/Django项目)</h4>
+                            
+                            <h5>项目概述：在线学习平台</h5>
+                            <p>我们将创建一个简单的在线学习平台，就像一个迷你版的网络课堂，用户可以浏览课程、注册账号、参与学习和讨论。这个项目使用Django框架（一种功能全面的网站开发工具，就像一个设备齐全的大厨房，提供了几乎所有你需要的功能）。</p>
+                            
+                            <div class="project-steps">
+                                <h5>第1步：准备工作环境</h5>
+                                <ol>
+                                    <li>确保电脑上已安装Python（3.7或更高版本）</li>
+                                    <li>在CURSOR的命令窗口中，创建一个新的项目文件夹：
+                                        <pre><code>mkdir learning-platform
+cd learning-platform</code></pre>
+                                    </li>
+                                    <li>创建虚拟环境：
+                                        <pre><code>python -m venv venv</code></pre>
+                                    </li>
+                                    <li>激活虚拟环境：
+                                        <pre><code># Windows系统
+venv\Scripts\activate
+
+# macOS/Linux系统
+source venv/bin/activate</code></pre>
+                                    </li>
+                                    <li>安装Django：
+                                        <pre><code>pip install django pillow</code></pre>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第2步：创建Django项目</h5>
+                                <ol>
+                                    <li>创建Django项目：
+                                        <pre><code>django-admin startproject learning_platform .</code></pre>
+                                    </li>
+                                    <li>创建应用：
+                                        <pre><code>python manage.py startapp courses
+python manage.py startapp users</code></pre>
+                                    </li>
+                                    <li>在AI助手中输入：<code>如何在Django的settings.py中注册新应用？</code></li>
+                                    <li>根据AI的建议，更新settings.py文件，注册新创建的应用</li>
+                                </ol>
+                                
+                                <h5>第3步：设计数据模型</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>为在线学习平台设计Django数据模型，包括课程、章节、用户和评论</code></li>
+                                    <li>根据AI的建议，在courses/models.py中创建课程相关模型：
+                                        <pre><code>from django.db import models
+from django.contrib.auth.models import User
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name_plural = "Categories"
+
+class Course(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='courses')
+    instructor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='courses')
+    image = models.ImageField(upload_to='course_images/', blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.title
+
+class Chapter(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='chapters')
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    order = models.IntegerField(default=0)
+    
+    def __str__(self):
+        return f"{self.course.title} - {self.title}"
+    
+    class Meta:
+        ordering = ['order']
+
+class Comment(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"Comment by {self.user.username} on {self.course.title}"</code></pre>
+                                    </li>
+                                    <li>在users/models.py中创建用户资料模型：
+                                        <pre><code>from django.db import models
+from django.contrib.auth.models import User
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(blank=True)
+    avatar = models.ImageField(upload_to='profile_images/', blank=True, null=True)
+    
+    def __str__(self):
+        return f"{self.user.username}'s Profile"</code></pre>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第4步：创建数据库和管理员</h5>
+                                <ol>
+                                    <li>运行数据库迁移：
+                                        <pre><code>python manage.py makemigrations
+python manage.py migrate</code></pre>
+                                    </li>
+                                    <li>创建超级管理员账户：
+                                        <pre><code>python manage.py createsuperuser</code></pre>
+                                    </li>
+                                    <li>在AI助手中输入：<code>如何在Django的admin.py中注册模型？</code></li>
+                                    <li>根据AI的建议，更新courses/admin.py和users/admin.py文件，注册模型到Django管理界面</li>
+                                </ol>
+                                
+                                <h5>第5步：创建视图和URL</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>为在线学习平台创建Django视图，包括课程列表、课程详情和用户认证</code></li>
+                                    <li>根据AI的建议，在courses/views.py中创建课程相关视图</li>
+                                    <li>在users/views.py中创建用户相关视图</li>
+                                    <li>创建URL配置文件，将URL映射到视图函数</li>
+                                </ol>
+                                
+                                <h5>第6步：创建模板</h5>
+                                <ol>
+                                    <li>创建基础模板结构：
+                                        <ul>
+                                            <li>templates/base.html（基础布局）</li>
+                                            <li>templates/courses/（课程相关模板）</li>
+                                            <li>templates/users/（用户相关模板）</li>
+                                        </ul>
+                                    </li>
+                                    <li>在AI助手中输入：<code>创建Django项目的基础模板，包含导航栏和页脚</code></li>
+                                    <li>根据AI的建议，创建各个页面的模板文件</li>
+                                </ol>
+                                
+                                <h5>第7步：添加静态文件</h5>
+                                <ol>
+                                    <li>创建静态文件目录结构：
+                                        <ul>
+                                            <li>static/css/（样式文件）</li>
+                                            <li>static/js/（JavaScript文件）</li>
+                                            <li>static/images/（图片文件）</li>
+                                        </ul>
+                                    </li>
+                                    <li>在AI助手中输入：<code>为在线学习平台创建CSS样式</code></li>
+                                    <li>根据AI的建议，创建样式文件和JavaScript文件</li>
+                                </ol>
+                                
+                                <h5>第8步：实现用户认证</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何在Django中实现用户注册、登录和注销功能？</code></li>
+                                    <li>根据AI的建议，更新users/views.py实现用户认证功能</li>
+                                    <li>创建注册、登录和个人资料页面的模板</li>
+                                </ol>
+                                
+                                <h5>第9步：实现课程功能</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何实现课程列表、课程详情和课程搜索功能？</code></li>
+                                    <li>根据AI的建议，更新courses/views.py实现课程相关功能</li>
+                                    <li>创建课程列表、课程详情和搜索结果页面的模板</li>
+                                </ol>
+                                
+                                <h5>第10步：添加评论功能</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何在Django中实现课程评论功能？</code></li>
+                                    <li>根据AI的建议，创建评论表单和视图函数</li>
+                                    <li>更新课程详情页面，添加评论区域</li>
+                                </ol>
+                                
+                                <h5>第11步：测试和调试</h5>
+                                <ol>
+                                    <li>运行开发服务器：<code>python manage.py runserver</code></li>
+                                    <li>测试各项功能，包括用户注册、登录、浏览课程和发表评论</li>
+                                    <li>修复发现的问题</li>
+                                </ol>
+                                
+                                <h5>第12步：部署应用</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何将Django应用部署到PythonAnywhere或Heroku？</code></li>
+                                    <li>根据AI的建议，准备部署配置文件</li>
+                                    <li>按照步骤完成部署</li>
+                                </ol>
+                            </div>
+                            
+                            <h5>常见问题解决</h5>
+                            <div class="faq">
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：静态文件不加载</div>
+                                    <div class="answer"><strong>解决方案</strong>：检查STATIC_URL和STATICFILES_DIRS设置，确保在模板中正确引用静态文件，在开发环境中确保DEBUG=True</div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：数据库迁移错误</div>
+                                    <div class="answer"><strong>解决方案</strong>：尝试删除migrations文件夹中除__init__.py外的所有文件，然后重新运行makemigrations和migrate命令</div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：用户上传的图片不显示</div>
+                                    <div class="answer"><strong>解决方案</strong>：确保正确配置了MEDIA_URL和MEDIA_ROOT，并在urls.py中添加了媒体文件的URL配置</div>
+                                </div>
+                            </div>
+                            
+                            <h5>进阶提升</h5>
+                            <p>完成基础项目后，你可以向AI询问如何添加以下功能来提升你的项目：</p>
+                            <ol>
+                                <li>实现课程进度跟踪功能</li>
+                                <li>添加在线支付系统，实现付费课程</li>
+                                <li>集成视频播放功能</li>
+                                <li>添加社交分享功能</li>
+                                <li>实现课程评分和推荐系统</li>
+                            </ol>
                 </section>
 
-                <!-- 其余章节将在这里继续添加 -->
+                        <section id="javaspring-boot项目">
+                            <h4>企业级Java网站开发 (Java/Spring Boot项目)</h4>
+                            
+                            <h5>项目概述：电子商务平台</h5>
+                            <p>我们将创建一个简单的电子商务平台，就像一个迷你版的网上商城，用户可以浏览商品、添加到购物车、下单和支付。这个项目使用Spring Boot框架（一种流行的Java企业级开发框架，就像一个工业级的生产线，提供了高效、可靠的开发体验）。</p>
+                            
+                            <div class="project-steps">
+                                <h5>第1步：准备工作环境</h5>
+                                <ol>
+                                    <li>确保电脑上已安装Java开发工具包(JDK)11或更高版本</li>
+                                    <li>确保电脑上已安装Java（11或更高版本）</li>
+                                    <li>在CURSOR的命令窗口中，创建一个新的项目文件夹：
+                                        <pre><code>mkdir enterprise-website
+cd enterprise-website</code></pre>
+                                    </li>
+                                    <li>创建虚拟环境（就像为项目创建一个独立的小房间，不会影响其他项目）：
+                                        <pre><code>python -m venv venv</code></pre>
+                                    </li>
+                                    <li>激活虚拟环境：
+                                        <pre><code># Windows系统
+venv\Scripts\activate
+
+# macOS/Linux系统
+source venv/bin/activate</code></pre>
+                                    </li>
+                                    <li>安装所需的库：
+                                        <pre><code>pip install django</code></pre>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第2步：创建项目结构</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>为Spring Boot企业级网站创建一个合理的项目结构</code></li>
+                                    <li>根据AI的建议，创建以下目录和文件：
+                                        <ul>
+                                            <li>manage.py（Spring Boot项目的命令行工具）</li>
+                                            <li>settings.py（Spring Boot项目的配置文件）</li>
+                                            <li>urls.py（Spring Boot项目的URL路由配置）</li>
+                                            <li>wsgi.py（Spring Boot项目的WSGI配置）</li>
+                                            <li>templates/（HTML模板文件夹，存放网页的"骨架"）
+                                                <ul>
+                                                    <li>layout.html（基础布局模板）</li>
+                                                    <li>index.html（首页模板）</li>
+                                                    <li>dashboard.html（仪表盘页面模板）</li>
+                                                </ul>
+                                            </li>
+                                            <li>static/（静态文件文件夹，存放CSS、JavaScript和图片等）
+                                                <ul>
+                                                    <li>css/style.css（样式文件）</li>
+                                                    <li>js/main.js（JavaScript文件）</li>
+                                                    <li>data/（示例数据文件夹）</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第3步：创建Spring Boot项目</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>创建一个基本的Spring Boot项目，包含首页和仪表盘页面的路由</code></li>
+                                    <li>根据AI的建议，实现基本的Spring Boot应用代码：
+                                        <pre><code>from django.shortcuts import render
+
+def index(request):
+    return render(request, 'index.html', {'title': '企业级网站'})
+
+def dashboard(request):
+    # 这里将来会添加数据处理代码
+    return render(request, 'dashboard.html', {'title': '企业级网站'})</code></pre>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第4步：准备示例数据</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>创建一些示例数据用于企业级网站项目</code></li>
+                                    <li>根据AI的建议，在static/data/目录下创建示例数据文件，如sales_data.csv：
+                                        <pre><code>date,product,region,sales,units
+2023-01-01,产品A,北区,12500,125
+2023-01-01,产品B,北区,8700,87
+2023-01-01,产品A,南区,10800,108
+2023-01-01,产品B,南区,6500,65
+2023-01-02,产品A,北区,13200,132
+2023-01-02,产品B,北区,9100,91
+...</code></pre>
+                                    </li>
+                                    <li>在AI助手中输入：<code>如何在Spring Boot中读取CSV数据并转换为JSON格式？</code></li>
+                                    <li>根据AI的建议，更新Controller添加数据处理函数</li>
+                                </ol>
+                                
+                                <h5>第5步：创建HTML模板</h5>
+                                <ol>
+                                    <li>创建templates/layout.html基础模板</li>
+                                    <li>在AI助手中输入：<code>创建一个Spring Boot应用的基础布局模板，包含导航栏和页脚</code></li>
+                                    <li>创建templates/index.html首页模板</li>
+                                    <li>创建templates/dashboard.html仪表盘页面模板</li>
+                                    <li>在AI助手中输入：<code>创建一个数据仪表盘页面的HTML模板，包含多个图表区域</code></li>
+                                </ol>
+                                
+                                <h5>第6步：实现数据可视化</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何在Spring Boot应用中使用Plotly.js创建交互式图表？</code></li>
+                                    <li>根据AI的建议，更新Controller添加数据处理和图表生成代码：
+                                        <pre><code>from django.shortcuts import render
+import pandas as pd
+import json
+
+def sales_data(request):
+    df = pd.read_csv('static/data/sales_data.csv')
+    
+    # 按日期和产品分组计算销售总额
+    sales_by_date = df.groupby(['date', 'product'])['sales'].sum().reset_index()
+    
+    # 转换为JSON格式
+    result = {
+        'dates': sorted(df['date'].unique().tolist()),
+        'products': sorted(df['product'].unique().tolist()),
+        'sales': []
+    }
+    
+    for product in result['products']:
+        product_data = sales_by_date[sales_by_date['product'] == product]
+        result['sales'].append({
+            'product': product,
+            'data': product_data['sales'].tolist()
+        })
+    
+    return JsonResponse(result)</code></pre>
+                                    </li>
+                                    <li>在static/js/main.js中添加图表生成代码</li>
+                                    <li>在AI助手中输入：<code>使用Plotly.js创建销售数据折线图和饼图的JavaScript代码</code></li>
+                                </ol>
+                                
+                                <h5>第7步：添加交互功能</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何添加日期范围选择器来筛选数据？</code></li>
+                                    <li>根据AI的建议，更新HTML模板和JavaScript代码，添加交互控件</li>
+                                    <li>添加数据筛选和图表更新功能</li>
+                                </ol>
+                                
+                                <h5>第8步：美化界面</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>为企业级网站创建现代简洁的CSS样式</code></li>
+                                    <li>根据AI的建议，更新static/css/style.css文件</li>
+                                    <li>添加响应式设计，确保在不同设备上都能正常显示</li>
+                                </ol>
+                                
+                                <h5>第9步：运行和测试</h5>
+                                <ol>
+                                    <li>在命令窗口中运行应用：<code>python manage.py runserver</code></li>
+                                    <li>在浏览器中访问：http://127.0.0.1:8080/</li>
+                                    <li>测试各项功能，确保图表正确显示和交互正常</li>
+                                </ol>
+                                
+                                <h5>第10步：部署应用</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何将Spring Boot应用部署到Heroku或PythonAnywhere？</code></li>
+                                    <li>根据AI的建议，准备部署配置文件（requirements.txt、Procfile等）</li>
+                                    <li>按照步骤完成部署</li>
+                                </ol>
+                            </div>
+                            
+                            <h5>常见问题解决</h5>
+                            <div class="faq">
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：图表不显示或显示错误</div>
+                                    <div class="answer"><strong>解决方案</strong>：检查浏览器控制台是否有JavaScript错误，确保数据格式正确，验证API端点是否返回预期的数据</div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：应用启动失败</div>
+                                    <div class="answer"><strong>解决方案</strong>：检查是否安装了所有必要的库，确保端口8080没有被其他应用占用，查看错误日志获取详细信息</div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：数据加载缓慢</div>
+                                    <div class="answer"><strong>解决方案</strong>：优化数据处理逻辑，考虑使用缓存机制，减小数据集大小或实现分页加载</div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                    
+                    <section id="移动应用开发">
+                        <h3>手机APP开发 (移动应用开发)</h3>
+                        <p>移动应用开发就是制作可以在手机上运行的应用程序。就像装修房子有不同的风格和材料，移动应用开发也有不同的技术和框架。以下是几种常见的移动应用开发方式，从简单到复杂：</p>
+                        
+                        <section id="react-native项目">
+                            <h4>跨平台手机应用开发 (React Native项目)</h4>
+                            
+                            <h5>项目概述：待办事项管理应用</h5>
+                            <p>我们将创建一个待办事项管理应用，就像一个智能备忘录，用户可以添加新任务、修改任务内容、删除不需要的任务，以及标记任务为已完成。这个项目将帮助你学习React Native（一种流行的移动应用开发框架，就像高级积木套装）的基础知识，以及如何用CURSOR来辅助开发。</p>
+                            
+                            <div class="project-steps">
+                                <h5>第1步：准备工作环境</h5>
+                                <ol>
+                                    <li>确保电脑上已安装Node.js（一种让JavaScript能在电脑上运行的工具，就像电饭煲需要电源）和npm（Node.js的应用商店，用来安装各种工具）</li>
+                                    <li>在CURSOR的命令窗口中，输入以下命令检查是否已安装：
+                                        <pre><code>node -v
+npm -v</code></pre>
+                                    </li>
+                                    <li>如果没有安装，可以在AI助手中询问：<code>怎么安装Node.js和npm？</code></li>
+                                </ol>
+                                
+                                <h5>第2步：创建React Native项目</h5>
+                                <ol>
+                                    <li>在CURSOR的命令窗口中，先切换到你想创建项目的文件夹</li>
+                                    <li>输入以下命令创建一个新的React Native项目（就像用模具制作蛋糕）：
+                                        <pre><code>npx react-native init task-manager
+cd task-manager</code></pre>
+                                    </li>
+                                    <li>等待项目创建完成（这可能需要几分钟时间）</li>
+                                    <li>在AI助手中询问：<code>React Native项目的文件结构是什么意思？每个文件有什么用？</code></li>
+                                </ol>
+                                
+                                <!-- 其余React Native项目步骤将在这里继续添加 -->
+                            </div>
+                        </section>
+                        
+                        <section id="flutter项目">
+                            <h4>高性能跨平台应用开发 (Flutter项目)</h4>
+                            
+                            <h5>项目概述：在线笔记应用</h5>
+                            <p>我们将创建一个在线笔记本应用，就像一个数字化的笔记本，用户可以创建新笔记、修改笔记内容、给笔记分类，以及搜索笔记。这个项目将帮助你学习Flutter（一种简单易用的移动应用开发框架，就像乐高积木一样可以逐步组合）的基础知识，以及如何用CURSOR来辅助开发。</p>
+                            
+                            <div class="project-steps">
+                                <h5>第1步：准备工作环境</h5>
+                                <ol>
+                                    <li>确保电脑上已安装Node.js和npm</li>
+                                    <li>在CURSOR的命令窗口中安装Flutter SDK（Flutter的开发工具包，帮助快速创建项目）：<code>flutter sdk</code></li>
+                                    <li>输入命令检查是否安装成功：<code>flutter doctor</code></li>
+                                </ol>
+                                
+                                <h5>第2步：创建Flutter项目</h5>
+                                <ol>
+                                    <li>在CURSOR的命令窗口中，先切换到你想创建项目的文件夹</li>
+                                    <li>输入以下命令创建一个新的Flutter项目：<code>flutter create notes-app</code></li>
+                                    <li>在出现的选项中，选择Flutter 3和你需要的功能（就像点菜一样选择你想要的配料）</li>
+                                    <li>等待项目创建完成</li>
+                                    <li>在AI助手中询问：<code>Flutter 3项目的文件结构是什么意思？每个文件有什么用？</code></li>
+                                </ol>
+                                
+                                <h5>第3步：规划组件结构</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>为在线笔记应用设计组件结构，包括笔记列表、笔记编辑器、分类管理和搜索功能</code></li>
+                                    <li>根据AI的建议创建组件文件（组件就像是预制的积木，可以组合成完整的应用）</li>
+                                    <li>在lib/components目录下创建所需的组件文件</li>
+                                </ol>
+                                
+                                <h5>第4步：实现笔记列表组件</h5>
+                                <ol>
+                                    <li>创建NoteList.dart组件</li>
+                                    <li>在AI助手中输入：<code>创建一个Flutter 3的笔记列表组件，显示所有笔记的标题和预览，并支持点击查看详情</code></li>
+                                    <li>根据AI的建议实现组件</li>
+                                    <li>询问AI：<code>如何在Flutter 3中实现笔记列表的排序和筛选功能？</code></li>
+                                </ol>
+                                
+                                <h5>第5步：实现笔记编辑器组件</h5>
+                                <ol>
+                                    <li>创建NoteEditor.dart组件</li>
+                                    <li>在AI助手中输入：<code>创建一个Flutter 3的笔记编辑器组件，支持Markdown格式，并能实时预览</code></li>
+                                    <li>根据AI的建议实现组件</li>
+                                    <li>询问AI：<code>如何在Flutter中集成一个好用的Markdown编辑器？</code></li>
+                                </ol>
+                                
+                                <h5>第6步：实现状态管理</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>在Flutter项目中，如何使用Provider或GetX管理笔记数据？</code></li>
+                                    <li>根据AI的建议选择状态管理方案</li>
+                                    <li>创建store文件夹和相关文件</li>
+                                    <li>实现笔记的增删改查操作</li>
+                                </ol>
+                                
+                                <h5>第7步：添加本地存储</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何在Flutter应用中使用SharedPreferences保存笔记数据？</code></li>
+                                    <li>根据AI的建议实现本地存储功能</li>
+                                    <li>测试数据持久化功能</li>
+                                </ol>
+                                
+                                <h5>第8步：测试与部署</h5>
+                                <ol>
+                                    <li>在命令窗口中运行应用：<code>flutter run</code></li>
+                                    <li>测试所有功能</li>
+                                    <li>在AI助手中输入：<code>如何构建Flutter应用并部署到Google Play或App Store？</code></li>
+                                    <li>根据AI的指导构建和部署应用</li>
+                                </ol>
+                            </div>
+                            
+                            <h5>常见问题解决</h5>
+                            <div class="faq">
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：Flutter组件不渲染或显示异常</div>
+                                    <div class="answer"><strong>解决方案</strong>：检查组件注册是否正确，确保数据响应式定义正确，使用Flutter开发工具调试组件状态</div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：状态管理更新但界面不更新</div>
+                                    <div class="answer"><strong>解决方案</strong>：确保正确使用Provider或GetX，检查组件是否正确订阅了状态变化</div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="question"><strong>问题</strong>：路由导航不正确</div>
+                                    <div class="answer"><strong>解决方案</strong>：检查路由配置，确保路径和组件映射正确，使用Flutter的导航守卫处理特殊情况</div>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                    
+                    <section id="数据科学与机器学习">
+                        <h3>数据科学与机器学习</h3>
+                        <p>数据科学与机器学习就像是从大量信息中发现规律和知识的过程，就像一个侦探从各种线索中找出真相。这个领域使用数学、统计学和编程技术来分析数据、建立模型并做出预测。</p>
+                        
+                        <section id="python数据分析项目">
+                            <h4>Python数据分析项目</h4>
+                            
+                            <h5>项目概述：销售数据分析仪表板</h5>
+                            <p>我们将创建一个销售数据分析仪表板，就像一个智能报表，可以自动分析销售数据、生成图表并提供业务洞察。这个项目使用Python的数据分析库（如Pandas、Matplotlib和Plotly）来处理数据和创建可视化效果。</p>
+                            
+                            <div class="project-steps">
+                                <h5>第1步：准备工作环境</h5>
+                                <ol>
+                                    <li>确保电脑上已安装Python（3.7或更高版本）</li>
+                                    <li>在CURSOR的命令窗口中，创建一个新的项目文件夹：
+                                        <pre><code>mkdir sales-analysis
+cd sales-analysis</code></pre>
+                                    </li>
+                                    <li>创建虚拟环境：
+                                        <pre><code>python -m venv venv</code></pre>
+                                    </li>
+                                    <li>激活虚拟环境：
+                                        <pre><code># Windows系统
+venv\Scripts\activate
+
+# macOS/Linux系统
+source venv/bin/activate</code></pre>
+                                    </li>
+                                    <li>安装所需的库：
+                                        <pre><code>pip install pandas numpy matplotlib seaborn plotly dash jupyter</code></pre>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第2步：获取和准备数据</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>创建一个示例销售数据CSV文件，包含日期、产品、地区、销售额和数量</code></li>
+                                    <li>根据AI的建议，创建data/sales_data.csv文件</li>
+                                    <li>创建一个Jupyter笔记本来探索数据：
+                                        <pre><code>jupyter notebook</code></pre>
+                                    </li>
+                                    <li>在笔记本中，导入必要的库并加载数据：
+                                        <pre><code>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import plotly.express as px
+import plotly.graph_objects as go
+
+# 设置绘图风格
+plt.style.use('ggplot')
+sns.set(style="whitegrid")
+
+# 读取数据
+sales_df = pd.read_csv('data/sales_data.csv')
+
+# 查看数据前几行
+sales_df.head()</code></pre>
+                                    </li>
+                                    <li>在AI助手中输入：<code>如何在Pandas中清洗和预处理销售数据？</code></li>
+                                    <li>根据AI的建议，添加数据清洗和预处理代码：
+                                        <pre><code># 检查缺失值
+sales_df.isnull().sum()
+
+# 处理缺失值
+sales_df = sales_df.dropna()  # 或使用填充方法
+
+# 转换日期列为日期时间类型
+sales_df['date'] = pd.to_datetime(sales_df['date'])
+
+# 创建额外的时间特征
+sales_df['year'] = sales_df['date'].dt.year
+sales_df['month'] = sales_df['date'].dt.month
+sales_df['day'] = sales_df['date'].dt.day
+sales_df['day_of_week'] = sales_df['date'].dt.day_name()
+
+# 检查并处理异常值
+# 例如，使用箱线图查看销售额分布
+plt.figure(figsize=(10, 6))
+sns.boxplot(x=sales_df['sales_amount'])
+plt.title('销售额分布')
+plt.show()
+
+# 移除极端异常值（如果需要）
+Q1 = sales_df['sales_amount'].quantile(0.25)
+Q3 = sales_df['sales_amount'].quantile(0.75)
+IQR = Q3 - Q1
+sales_df = sales_df[(sales_df['sales_amount'] >= Q1 - 1.5 * IQR) & 
+                    (sales_df['sales_amount'] <= Q3 + 1.5 * IQR)]</code></pre>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第3步：探索性数据分析</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何使用Pandas和Matplotlib进行销售数据的探索性分析？</code></li>
+                                    <li>根据AI的建议，添加探索性分析代码：
+                                        <pre><code># 基本统计描述
+sales_df.describe()
+
+# 按产品分组统计销售额
+product_sales = sales_df.groupby('product')['sales_amount'].sum().sort_values(ascending=False)
+
+plt.figure(figsize=(12, 6))
+product_sales.plot(kind='bar')
+plt.title('各产品总销售额')
+plt.xlabel('产品')
+plt.ylabel('销售额')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+
+# 按地区分组统计销售额
+region_sales = sales_df.groupby('region')['sales_amount'].sum().sort_values(ascending=False)
+
+plt.figure(figsize=(10, 6))
+region_sales.plot(kind='pie', autopct='%1.1f%%')
+plt.title('各地区销售额占比')
+plt.ylabel('')
+plt.tight_layout()
+plt.show()
+
+# 按月份分析销售趋势
+monthly_sales = sales_df.groupby(['year', 'month'])['sales_amount'].sum().reset_index()
+monthly_sales['date'] = pd.to_datetime(monthly_sales[['year', 'month']].assign(day=1))
+
+plt.figure(figsize=(14, 7))
+plt.plot(monthly_sales['date'], monthly_sales['sales_amount'], marker='o', linestyle='-')
+plt.title('月度销售趋势')
+plt.xlabel('月份')
+plt.ylabel('销售额')
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+# 按星期几分析销售模式
+weekday_sales = sales_df.groupby('day_of_week')['sales_amount'].mean().reindex(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
+
+plt.figure(figsize=(10, 6))
+weekday_sales.plot(kind='bar')
+plt.title('平均每日销售额（按星期几）')
+plt.xlabel('星期几')
+plt.ylabel('平均销售额')
+plt.tight_layout()
+plt.show()</code></pre>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第4步：创建交互式可视化</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何使用Plotly创建交互式销售数据可视化？</code></li>
+                                    <li>根据AI的建议，添加Plotly可视化代码：
+                                        <pre><code># 产品销售额柱状图
+fig = px.bar(
+    sales_df.groupby('product')['sales_amount'].sum().reset_index(),
+    x='product',
+    y='sales_amount',
+    title='各产品总销售额',
+    labels={'product': '产品', 'sales_amount': '销售额'}
+)
+fig.show()
+
+# 地区销售额饼图
+fig = px.pie(
+    sales_df.groupby('region')['sales_amount'].sum().reset_index(),
+    values='sales_amount',
+    names='region',
+    title='各地区销售额占比'
+)
+fig.show()
+
+# 销售趋势线图
+monthly_data = sales_df.groupby(['year', 'month'])['sales_amount'].sum().reset_index()
+monthly_data['date'] = pd.to_datetime(monthly_data[['year', 'month']].assign(day=1))
+
+fig = px.line(
+    monthly_data,
+    x='date',
+    y='sales_amount',
+    title='月度销售趋势',
+    labels={'date': '日期', 'sales_amount': '销售额'}
+)
+fig.show()
+
+# 产品和地区的热力图
+heatmap_data = sales_df.pivot_table(
+    index='product',
+    columns='region',
+    values='sales_amount',
+    aggfunc='sum'
+)
+
+fig = px.imshow(
+    heatmap_data,
+    labels=dict(x="地区", y="产品", color="销售额"),
+    x=heatmap_data.columns,
+    y=heatmap_data.index,
+    title='产品-地区销售热力图'
+)
+fig.show()
+
+# 散点图：销售数量与销售额的关系
+fig = px.scatter(
+    sales_df,
+    x='quantity',
+    y='sales_amount',
+    color='product',
+    size='quantity',
+    hover_data=['date', 'region'],
+    title='销售数量与销售额关系',
+    labels={'quantity': '销售数量', 'sales_amount': '销售额', 'product': '产品'}
+)
+fig.show()</code></pre>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第5步：创建Dash交互式仪表板</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何使用Dash创建Python销售数据分析仪表板？</code></li>
+                                    <li>根据AI的建议，创建app.py文件：
+                                        <pre><code>import dash
+from dash import dcc, html
+from dash.dependencies import Input, Output
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+
+# 加载数据
+sales_df = pd.read_csv('data/sales_data.csv')
+sales_df['date'] = pd.to_datetime(sales_df['date'])
+sales_df['year'] = sales_df['date'].dt.year
+sales_df['month'] = sales_df['date'].dt.month
+sales_df['day'] = sales_df['date'].dt.day
+sales_df['day_of_week'] = sales_df['date'].dt.day_name()
+
+# 初始化Dash应用
+app = dash.Dash(__name__, title="销售数据分析仪表板")
+
+# 定义应用布局
+app.layout = html.Div([
+    html.H1("销售数据分析仪表板", style={'textAlign': 'center', 'marginBottom': 30}),
+    
+    # 过滤器行
+    html.Div([
+        html.Div([
+            html.Label("选择年份"),
+            dcc.Dropdown(
+                id='year-filter',
+                options=[{'label': str(year), 'value': year} for year in sorted(sales_df['year'].unique())],
+                value=sales_df['year'].max(),
+                clearable=False
+            )
+        ], style={'width': '30%', 'display': 'inline-block', 'marginRight': '5%'}),
+        
+        html.Div([
+            html.Label("选择地区"),
+            dcc.Dropdown(
+                id='region-filter',
+                options=[{'label': region, 'value': region} for region in sorted(sales_df['region'].unique())],
+                value=sales_df['region'].unique().tolist(),
+                multi=True
+            )
+        ], style={'width': '30%', 'display': 'inline-block', 'marginRight': '5%'}),
+        
+        html.Div([
+            html.Label("选择产品"),
+            dcc.Dropdown(
+                id='product-filter',
+                options=[{'label': product, 'value': product} for product in sorted(sales_df['product'].unique())],
+                value=sales_df['product'].unique().tolist(),
+                multi=True
+            )
+        ], style={'width': '30%', 'display': 'inline-block'})
+    ], style={'marginBottom': 30}),
+    
+    # 第一行图表
+    html.Div([
+        html.Div([
+            html.H3("销售额概览", style={'textAlign': 'center'}),
+            dcc.Graph(id='sales-overview')
+        ], style={'width': '48%', 'display': 'inline-block'}),
+        
+        html.Div([
+            html.H3("各地区销售额占比", style={'textAlign': 'center'}),
+            dcc.Graph(id='region-pie')
+        ], style={'width': '48%', 'display': 'inline-block', 'float': 'right'})
+    ], style={'marginBottom': 30}),
+    
+    # 第二行图表
+    html.Div([
+        html.Div([
+            html.H3("月度销售趋势", style={'textAlign': 'center'}),
+            dcc.Graph(id='monthly-trend')
+        ], style={'width': '48%', 'display': 'inline-block'}),
+        
+        html.Div([
+            html.H3("产品销售额对比", style={'textAlign': 'center'}),
+            dcc.Graph(id='product-comparison')
+        ], style={'width': '48%', 'display': 'inline-block', 'float': 'right'})
+    ], style={'marginBottom': 30}),
+    
+    # 第三行图表
+    html.Div([
+        html.H3("产品-地区销售热力图", style={'textAlign': 'center'}),
+        dcc.Graph(id='heatmap')
+    ])
+])
+
+# 定义回调函数
+@app.callback(
+    [Output('sales-overview', 'figure'),
+     Output('region-pie', 'figure'),
+     Output('monthly-trend', 'figure'),
+     Output('product-comparison', 'figure'),
+     Output('heatmap', 'figure')],
+    [Input('year-filter', 'value'),
+     Input('region-filter', 'value'),
+     Input('product-filter', 'value')]
+)
+def update_graphs(selected_year, selected_regions, selected_products):
+    # 过滤数据
+    filtered_df = sales_df[
+        (sales_df['year'] == selected_year) &
+        (sales_df['region'].isin(selected_regions)) &
+        (sales_df['product'].isin(selected_products))
+    ]
+    
+    # 销售额概览
+    sales_overview = go.Figure()
+    sales_overview.add_trace(go.Indicator(
+        mode="number+delta",
+        value=filtered_df['sales_amount'].sum(),
+        title={"text": "总销售额"},
+        delta={'reference': sales_df[(sales_df['year'] == selected_year - 1) &
+                                    (sales_df['region'].isin(selected_regions)) &
+                                    (sales_df['product'].isin(selected_products))]['sales_amount'].sum(),
+               'relative': True},
+        domain={'x': [0, 1], 'y': [0, 1]}
+    ))
+    
+    # 地区饼图
+    region_data = filtered_df.groupby('region')['sales_amount'].sum().reset_index()
+    region_pie = px.pie(
+        region_data,
+        values='sales_amount',
+        names='region',
+        title='各地区销售额占比'
+    )
+    
+    # 月度趋势
+    monthly_data = filtered_df.groupby('month')['sales_amount'].sum().reset_index()
+    monthly_trend = px.line(
+        monthly_data,
+        x='month',
+        y='sales_amount',
+        title='月度销售趋势',
+        labels={'month': '月份', 'sales_amount': '销售额'}
+    )
+    monthly_trend.update_xaxes(tickvals=list(range(1, 13)))
+    
+    # 产品对比
+    product_data = filtered_df.groupby('product')['sales_amount'].sum().reset_index()
+    product_comparison = px.bar(
+        product_data,
+        x='product',
+        y='sales_amount',
+        title='产品销售额对比',
+        labels={'product': '产品', 'sales_amount': '销售额'}
+    )
+    
+    # 热力图
+    heatmap_data = filtered_df.pivot_table(
+        index='product',
+        columns='region',
+        values='sales_amount',
+        aggfunc='sum'
+    )
+    heatmap = px.imshow(
+        heatmap_data,
+        labels=dict(x="地区", y="产品", color="销售额"),
+        x=heatmap_data.columns,
+        y=heatmap_data.index,
+        title='产品-地区销售热力图'
+    )
+    
+    return sales_overview, region_pie, monthly_trend, product_comparison, heatmap
+
+# 运行应用
+if __name__ == '__main__':
+    app.run_server(debug=True)</code></pre>
+                                    </li>
+                                </ol>
+                                
+                                <h5>第6步：生成分析报告</h5>
+                                <ol>
+                                    <li>在AI助手中输入：<code>如何使用Python生成销售数据分析报告？</code></li>
+                                    <li>根据AI的建议，创建report_generator.py文件：
+                                        <pre><code>import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from fpdf import FPDF
+import os
+
+class SalesReportGenerator:
+    def __init__(self, data_file):
+        self.sales_df = pd.read_csv(data_file)
+        self.sales_df['date'] = pd.to_datetime(self.sales_df['date'])
+        self.sales_df['year'] = self.sales_df['date'].dt.year
+        self.sales_df['month'] = self.sales_df['date'].dt.month
+        self.sales_df['day'] = self.sales_df['date'].dt.day
+        self.sales_df['day_of_week'] = self.sales_df['date'].dt.day_name()
+        
+        # 创建输出目录
+        os.makedirs('report_images', exist_ok=True)
+    
+    def generate_charts(self):
+        # 产品销售额柱状图
+        plt.figure(figsize=(10, 6))
+        product_sales = self.sales_df.groupby('product')['sales_amount'].sum().sort_values(ascending=False)
+        product_sales.plot(kind='bar')
+        plt.title('各产品总销售额')
+        plt.xlabel('产品')
+        plt.ylabel('销售额')
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.savefig('report_images/product_sales.png')
+        plt.close()
+        
+        # 地区销售额饼图
+        plt.figure(figsize=(8, 8))
+        region_sales = self.sales_df.groupby('region')['sales_amount'].sum()
+        region_sales.plot(kind='pie', autopct='%1.1f%%')
+        plt.title('各地区销售额占比')
+        plt.ylabel('')
+        plt.tight_layout()
+        plt.savefig('report_images/region_sales.png')
+        plt.close()
+        
+        # 月度销售趋势
+        plt.figure(figsize=(12, 6))
+        monthly_sales = self.sales_df.groupby(['year', 'month'])['sales_amount'].sum().reset_index()
+        monthly_sales['date'] = pd.to_datetime(monthly_sales[['year', 'month']].assign(day=1))
+        plt.plot(monthly_sales['date'], monthly_sales['sales_amount'], marker='o', linestyle='-')
+        plt.title('月度销售趋势')
+        plt.xlabel('月份')
+        plt.ylabel('销售额')
+        plt.grid(True)
+        plt.tight_layout()
+        plt.savefig('report_images/monthly_trend.png')
+        plt.close()
+        
+        # 产品-地区热力图
+        plt.figure(figsize=(12, 8))
+        heatmap_data = self.sales_df.pivot_table(
+            index='product',
+            columns='region',
+            values='sales_amount',
+            aggfunc='sum'
+        )
+        sns.heatmap(heatmap_data, annot=True, fmt='.0f', cmap='YlGnBu')
+        plt.title('产品-地区销售热力图')
+        plt.tight_layout()
+        plt.savefig('report_images/heatmap.png')
+        plt.close()
+    
+    def generate_pdf_report(self, output_file='sales_report.pdf'):
+        # 生成图表
+        self.generate_charts()
+        
+        # 计算关键指标
+        total_sales = self.sales_df['sales_amount'].sum()
+        avg_sales = self.sales_df['sales_amount'].mean()
+        top_product = self.sales_df.groupby('product')['sales_amount'].sum().idxmax()
+        top_region = self.sales_df.groupby('region')['sales_amount'].sum().idxmax()
+        
+        # 创建PDF
+        pdf = FPDF()
+        pdf.add_page()
+        
+        # 标题
+        pdf.set_font('Arial', 'B', 16)
+        pdf.cell(190, 10, '销售数据分析报告', 0, 1, 'C')
+        pdf.ln(10)
+        
+        # 关键指标
+        pdf.set_font('Arial', 'B', 12)
+        pdf.cell(190, 10, '关键指标摘要', 0, 1, 'L')
+        pdf.set_font('Arial', '', 12)
+        pdf.cell(190, 10, f'总销售额: {total_sales:,.2f}', 0, 1, 'L')
+        pdf.cell(190, 10, f'平均销售额: {avg_sales:,.2f}', 0, 1, 'L')
+        pdf.cell(190, 10, f'销售额最高产品: {top_product}', 0, 1, 'L')
+                            <h5>第5步：添加样式</h5>
+                            <ol>
+                                <li>在AI助手中输入：<code>推荐在Electron项目中使用哪种CSS方案？</code></li>
+                                <li>根据AI的建议，选择合适的样式方案（如CSS模块、Tailwind CSS或Styled Components）</li>
+                                <li>为博客网站添加响应式设计</li>
+                            </ol>
+                            
+                            <h5>第6步：添加交互功能</h5>
+                            <ol>
+                                <li>实现搜索功能</li>
+                                <li>添加文章评论系统</li>
+                                <li>实现暗色/亮色模式切换</li>
+                            </ol>
+                            
+                            <h5>第7步：部署网站</h5>
+                            <ol>
+                                <li>在AI助手中输入：<code>如何将Electron博客部署到Vercel？</code></li>
+                                <li>按照AI的指导，配置部署设置</li>
+                                <li>完成网站部署</li>
+                            </ol>
+                        </div>
+                        
+                        <h5>常见问题解决</h5>
+                        <div class="faq">
+                            <div class="faq-item">
+                                <div class="question"><strong>问题</strong>：静态生成的页面数据不更新</div>
+                                <div class="answer"><strong>解决方案</strong>：检查getStaticProps函数，确保正确配置了revalidate参数或使用增量静态再生成</div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="question"><strong>问题</strong>：图片优化不生效</div>
+                                <div class="answer"><strong>解决方案</strong>：确保正确使用Electron的Image组件，并配置了适当的图片域名</div>
+                            </div>
+                            
+                            <div class="faq-item">
+                                <div class="question"><strong>问题</strong>：部署后出现404错误</div>
+                                <div class="answer"><strong>解决方案</strong>：检查路由配置，确保动态路由的getStaticPaths返回了所有必要的路径</div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
                 
                 <section id="常见问题与解决方案">
                     <h2>常见问题与解决方案</h2>
