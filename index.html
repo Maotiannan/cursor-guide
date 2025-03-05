@@ -1867,54 +1867,385 @@ class SalesReportGenerator:
         pdf.cell(190, 10, f'总销售额: {total_sales:,.2f}', 0, 1, 'L')
         pdf.cell(190, 10, f'平均销售额: {avg_sales:,.2f}', 0, 1, 'L')
         pdf.cell(190, 10, f'销售额最高产品: {top_product}', 0, 1, 'L')
-                            <h5>第5步：添加样式</h5>
-                            <ol>
-                                <li>在AI助手中输入：<code>推荐在Electron项目中使用哪种CSS方案？</code></li>
-                                <li>根据AI的建议，选择合适的样式方案（如CSS模块、Tailwind CSS或Styled Components）</li>
-                                <li>为博客网站添加响应式设计</li>
-                            </ol>
-                            
-                            <h5>第6步：添加交互功能</h5>
-                            <ol>
-                                <li>实现搜索功能</li>
-                                <li>添加文章评论系统</li>
-                                <li>实现暗色/亮色模式切换</li>
-                            </ol>
-                            
-                            <h5>第7步：部署网站</h5>
-                            <ol>
-                                <li>在AI助手中输入：<code>如何将Electron博客部署到Vercel？</code></li>
-                                <li>按照AI的指导，配置部署设置</li>
-                                <li>完成网站部署</li>
-                            </ol>
+        pdf.cell(190, 10, f'销售额最高地区: {top_region}', 0, 1, 'L')
                         </div>
+                    </section>
+                    
+                    <section id="机器学习模型构建">
+                        <h4>机器学习模型构建</h4>
                         
-                        <h5>常见问题解决</h5>
-                        <div class="faq">
-                            <div class="faq-item">
-                                <div class="question"><strong>问题</strong>：静态生成的页面数据不更新</div>
-                                <div class="answer"><strong>解决方案</strong>：检查getStaticProps函数，确保正确配置了revalidate参数或使用增量静态再生成</div>
-                            </div>
+                        <h5>项目概述：客户流失预测模型</h5>
+                        <p>我们将创建一个机器学习模型来预测哪些客户可能会离开公司（客户流失），就像一个能预测未来的"水晶球"。这个项目将帮助你学习如何使用CURSOR开发实用的机器学习应用。</p>
+                        
+                        <div class="project-steps">
+                            <h5>第1步：准备工作环境</h5>
+                            <ol>
+                                <li>确保电脑上已安装Python（3.7或更高版本）</li>
+                                <li>在CURSOR的命令窗口中，创建一个新的项目文件夹：
+                                    <pre><code>mkdir customer-churn-prediction
+cd customer-churn-prediction</code></pre>
+                                </li>
+                                <li>创建虚拟环境：
+                                    <pre><code>python -m venv venv</code></pre>
+                                </li>
+                                <li>激活虚拟环境：
+                                    <pre><code># Windows系统
+venv\Scripts\activate
+
+# macOS/Linux系统
+source venv/bin/activate</code></pre>
+                                </li>
+                                <li>安装所需的库：
+                                    <pre><code>pip install pandas numpy matplotlib seaborn scikit-learn jupyter</code></pre>
+                                </li>
+                            </ol>
                             
-                            <div class="faq-item">
-                                <div class="question"><strong>问题</strong>：图片优化不生效</div>
-                                <div class="answer"><strong>解决方案</strong>：确保正确使用Electron的Image组件，并配置了适当的图片域名</div>
-                            </div>
+                            <h5>第2步：获取和探索数据</h5>
+                            <ol>
+                                <li>在AI助手中输入：<code>哪里可以找到客户流失预测的数据集？</code></li>
+                                <li>根据AI的建议，下载一个合适的客户流失数据集（如电信客户流失数据集）</li>
+                                <li>创建一个Jupyter笔记本来探索数据：
+                                    <pre><code>jupyter notebook</code></pre>
+                                </li>
+                                <li>在笔记本中，导入必要的库并加载数据：
+                                    <pre><code>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# 设置绘图风格
+plt.style.use('ggplot')
+sns.set(style="whitegrid")
+
+# 读取数据
+churn_df = pd.read_csv('customer_churn_data.csv')
+
+# 查看数据前几行
+churn_df.head()</code></pre>
+                                </li>
+                                <li>探索数据基本信息：
+                                    <pre><code># 查看数据基本信息
+churn_df.info()
+
+# 查看统计摘要
+churn_df.describe()
+
+# 查看目标变量（客户是否流失）的分布
+churn_df['Churn'].value_counts()
+churn_df['Churn'].value_counts(normalize=True)
+
+# 可视化目标变量分布
+plt.figure(figsize=(8, 6))
+sns.countplot(x='Churn', data=churn_df)
+plt.title('客户流失分布')
+plt.show()</code></pre>
+                                </li>
+                            </ol>
                             
-                            <div class="faq-item">
-                                <div class="question"><strong>问题</strong>：部署后出现404错误</div>
-                                <div class="answer"><strong>解决方案</strong>：检查路由配置，确保动态路由的getStaticPaths返回了所有必要的路径</div>
-                            </div>
+                            <h5>第3步：数据处理和特征工程</h5>
+                            <ol>
+                                <li>在AI助手中输入：<code>如何处理客户流失数据集中的缺失值和分类变量？</code></li>
+                                <li>根据AI的建议，添加数据处理代码：
+                                    <pre><code># 检查缺失值
+churn_df.isnull().sum()
+
+# 处理缺失值（如果有）
+# 例如，用均值填充数值型缺失值
+for col in churn_df.select_dtypes(include=['float64', 'int64']).columns:
+    if churn_df[col].isnull().sum() > 0:
+        churn_df[col].fillna(churn_df[col].mean(), inplace=True)
+
+# 处理分类变量
+# 将分类变量转换为数值型（独热编码）
+categorical_cols = churn_df.select_dtypes(include=['object']).columns
+churn_df_encoded = pd.get_dummies(churn_df, columns=categorical_cols, drop_first=True)
+
+# 将目标变量转换为数值型（如果需要）
+if 'Churn' in churn_df.columns and churn_df['Churn'].dtype == 'object':
+    churn_df_encoded['Churn'] = churn_df_encoded['Churn'].map({'Yes': 1, 'No': 0})
+
+# 查看处理后的数据
+churn_df_encoded.head()</code></pre>
+                                </li>
+                                <li>创建特征相关性分析：
+                                    <pre><code># 计算特征之间的相关性
+correlation = churn_df_encoded.corr()
+
+# 可视化相关性矩阵
+plt.figure(figsize=(16, 12))
+sns.heatmap(correlation, annot=True, cmap='coolwarm', linewidths=0.5, fmt=".2f")
+plt.title('特征相关性矩阵')
+plt.tight_layout()
+plt.show()
+
+# 查看与目标变量（Churn）相关性最高的特征
+churn_correlation = correlation['Churn'].sort_values(ascending=False)
+print("与客户流失最相关的特征：")
+print(churn_correlation)</code></pre>
+                                </li>
+                            </ol>
+                            
+                            <h5>第4步：特征选择和数据准备</h5>
+                            <ol>
+                                <li>在AI助手中输入：<code>如何选择最重要的特征并准备训练数据？</code></li>
+                                <li>根据AI的建议，添加特征选择和数据准备代码：
+                                    <pre><code>from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# 分离特征和目标变量
+X = churn_df_encoded.drop('Churn', axis=1)
+y = churn_df_encoded['Churn']
+
+# 特征选择（可选）
+# 方法1：基于相关性选择特征
+correlation_threshold = 0.1
+corr_with_target = abs(correlation['Churn'])
+important_features = corr_with_target[corr_with_target > correlation_threshold].index.tolist()
+important_features.remove('Churn')  # 移除目标变量本身
+X = X[important_features]
+
+# 方法2：使用特征重要性（需要先训练一个模型）
+# 这里我们先跳过，后面会展示
+
+# 划分训练集和测试集
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+
+# 特征缩放
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+print(f"训练集形状: {X_train_scaled.shape}")
+print(f"测试集形状: {X_test_scaled.shape}")</code></pre>
+                                </li>
+                            </ol>
+                            <h5>第5步：构建和训练模型</h5>
+                            <ol>
+                                <li>在AI助手中输入：<code>哪些机器学习模型适合客户流失预测？</code></li>
+                                <li>根据AI的建议，实现多个模型：
+                                    <pre><code>from sklearn.linear_model import LogisticRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report, roc_auc_score, roc_curve
+
+# 1. 逻辑回归模型（就像一个简单的"是/否"决策工具）
+lr_model = LogisticRegression(random_state=42, max_iter=1000)
+lr_model.fit(X_train_scaled, y_train)
+lr_pred = lr_model.predict(X_test_scaled)
+lr_prob = lr_model.predict_proba(X_test_scaled)[:, 1]
+
+# 2. 决策树模型（就像一个问答游戏，通过一系列问题来做决定）
+dt_model = DecisionTreeClassifier(random_state=42)
+dt_model.fit(X_train_scaled, y_train)
+dt_pred = dt_model.predict(X_test_scaled)
+dt_prob = dt_model.predict_proba(X_test_scaled)[:, 1]
+
+# 3. 随机森林模型（就像一群专家一起投票做决定）
+rf_model = RandomForestClassifier(random_state=42)
+rf_model.fit(X_train_scaled, y_train)
+rf_pred = rf_model.predict(X_test_scaled)
+rf_prob = rf_model.predict_proba(X_test_scaled)[:, 1]
+
+# 定义一个函数来评估模型性能
+def evaluate_model(y_true, y_pred, y_prob, model_name):
+    accuracy = accuracy_score(y_true, y_pred)
+    precision = precision_score(y_true, y_pred)
+    recall = recall_score(y_true, y_pred)
+    f1 = f1_score(y_true, y_pred)
+    auc = roc_auc_score(y_true, y_prob)
+    
+    print(f"{model_name} 性能评估:")
+    print(f"准确率: {accuracy:.4f}")
+    print(f"精确率: {precision:.4f}")
+    print(f"召回率: {recall:.4f}")
+    print(f"F1分数: {f1:.4f}")
+    print(f"AUC: {auc:.4f}")
+    print("\n混淆矩阵:")
+    print(confusion_matrix(y_true, y_pred))
+    print("\n分类报告:")
+    print(classification_report(y_true, y_pred))
+    print("-" * 50)
+    
+    return accuracy, precision, recall, f1, auc
+
+# 评估所有模型
+lr_metrics = evaluate_model(y_test, lr_pred, lr_prob, "逻辑回归")
+dt_metrics = evaluate_model(y_test, dt_pred, dt_prob, "决策树")
+rf_metrics = evaluate_model(y_test, rf_pred, rf_prob, "随机森林")</code></pre>
+                                </li>
+                            </ol>
                         </div>
                     </section>
                 </section>
                 
-                <section id="常见问题与解决方案">
-                    <h2>常见问题与解决方案</h2>
+                <section id="桌面应用开发">
+                    <h3>桌面应用开发</h3>
+                    <p>桌面应用是直接在电脑上运行的软件，不需要通过浏览器访问。它们通常可以提供更丰富的功能和更好的性能，就像你电脑上的Word、Photoshop或游戏一样。</p>
                     
-                    <section>
-                        <h3>安装与启动问题</h3>
+                    <section id="electron项目">
+                        <h4>Electron项目</h4>
                         
+                        <h5>项目概述：简易桌面记事本应用</h5>
+                        <p>我们将创建一个简单的桌面记事本应用，就像一个轻量版的记事本，可以创建、编辑和保存文本文件。这个项目将帮助你学习如何使用CURSOR和Electron框架开发跨平台桌面应用。</p>
+                        
+                        <div class="project-steps">
+                            <h5>第1步：准备工作环境</h5>
+                            <ol>
+                                <li>确保已安装Node.js（12.0或更高版本）</li>
+                                <li>在CURSOR的命令窗口中，创建一个新的项目文件夹：
+                                    <pre><code>mkdir simple-notepad
+cd simple-notepad</code></pre>
+                                </li>
+                                <li>初始化项目：
+                                    <pre><code>npm init -y</code></pre>
+                                </li>
+                                <li>安装Electron：
+                                    <pre><code>npm install electron --save-dev</code></pre>
+                                </li>
+                                <li>在package.json文件中添加启动脚本：
+                                    <pre><code>{
+  "name": "simple-notepad",
+  "version": "1.0.0",
+  "description": "A simple notepad desktop application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^13.0.0"
+  }
+}</code></pre>
+                                </li>
+                            </ol>
+                            
+                            <h5>第2步：创建主进程文件</h5>
+                            <ol>
+                                <li>在AI助手中输入：<code>创建一个基本的Electron主进程文件</code></li>
+                                <li>创建main.js文件：
+                                    <pre><code>const { app, BrowserWindow, Menu, dialog, ipcMain } = require('electron');
+const path = require('path');
+const fs = require('fs');
+
+// 保存主窗口的引用，防止被JavaScript的垃圾回收机制回收
+let mainWindow;
+let currentFilePath = null;
+
+// 创建主窗口
+function createWindow() {
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: true, // 允许在渲染进程中使用Node.js API
+      contextIsolation: false, // 关闭上下文隔离
+      enableRemoteModule: true // 启用remote模块
+    }
+  });
+
+  // 加载应用的index.html
+  mainWindow.loadFile('index.html');
+
+  // 创建应用菜单
+  const template = [
+    {
+      label: '文件',
+      submenu: [
+        {
+          label: '新建',
+          accelerator: 'CmdOrCtrl+N',
+          click() {
+            newFile();
+          }
+        },
+        {
+          label: '打开',
+          accelerator: 'CmdOrCtrl+O',
+          click() {
+            openFile();
+          }
+        },
+        {
+          label: '保存',
+          accelerator: 'CmdOrCtrl+S',
+          click() {
+            saveFile();
+          }
+        },
+        {
+          label: '另存为',
+          accelerator: 'CmdOrCtrl+Shift+S',
+          click() {
+            saveFileAs();
+          }
+        },
+        { type: 'separator' },
+        {
+          label: '退出',
+          accelerator: 'CmdOrCtrl+Q',
+          click() {
+            app.quit();
+          }
+        }
+      ]
+    },
+    {
+      label: '编辑',
+      submenu: [
+        { role: 'undo' },
+        { role: 'redo' },
+        { type: 'separator' },
+        { role: 'cut' },
+        { role: 'copy' },
+        { role: 'paste' },
+        { role: 'delete' },
+        { type: 'separator' },
+        { role: 'selectAll' }
+      ]
+    },
+    {
+      label: '视图',
+      submenu: [
+        { role: 'reload' },
+        { role: 'forceReload' },
+        { role: 'toggleDevTools' },
+        { type: 'separator' },
+        { role: 'resetZoom' },
+        { role: 'zoomIn' },
+        { role: 'zoomOut' },
+        { type: 'separator' },
+        { role: 'togglefullscreen' }
+      ]
+    },
+    {
+      label: '帮助',
+      submenu: [
+        {
+          label: '关于',
+          click() {
+            dialog.showMessageBox({
+              title: '关于',
+              message: '简易记事本 v1.0.0',
+              detail: '使用Electron构建的简单记事本应用'
+            });
+          }
+        }
+      ]
+    }
+  ];
+
+  const menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
+
+  // 当窗口关闭时触发
+  mainWindow.on('closed', function () {
+    mainWindow = null;
+  });
+}
+
                         <div class="faq">
                             <div class="faq-item">
                                 <div class="question"><strong>问题</strong>：CURSOR安装后无法启动</div>
